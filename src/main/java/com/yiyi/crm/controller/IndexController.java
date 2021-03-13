@@ -1,4 +1,4 @@
-package com.yiyi.crm;
+package com.yiyi.crm.controller;
 
 import com.yiyi.crm.base.BaseController;
 import org.springframework.stereotype.Controller;

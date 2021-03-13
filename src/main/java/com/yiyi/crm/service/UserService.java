@@ -5,6 +5,7 @@ import com.yiyi.crm.dao.UserMapper;
 import com.yiyi.crm.model.UserModel;
 import com.yiyi.crm.utils.AssertUtil;
 import com.yiyi.crm.utils.Md5Util;
+import com.yiyi.crm.utils.UserIDBase64;
 import com.yiyi.crm.vo.User;
 import javax.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
@@ -24,7 +25,10 @@ public class UserService extends BaseService<User, Integer> {
   }
 
   private UserModel buildUserModel(User user) {
-    return new UserModel(user.getId(), user.getUserName(), user.getTrueName());
+    return new UserModel(
+        UserIDBase64.encoderUserID(user.getId()),
+        user.getUserName(),
+        user.getTrueName());
   }
 
   /**

@@ -7,10 +7,13 @@ import com.yiyi.crm.model.UserModel;
 import com.yiyi.crm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("user")
 public class UserController extends BaseController {
   private final UserService userService;
 
@@ -19,9 +22,9 @@ public class UserController extends BaseController {
     this.userService = userService;
   }
 
-  @GetMapping("login")
+  @PostMapping("login")
   @ResponseBody
-  public ResultInfo userLogin(String userName, String userPwd) {
+  public ResultInfo userLogin(@RequestParam String userName, @RequestParam String userPwd) {
     ResultInfo resultInfo = new ResultInfo();
     try {
       UserModel userModel = userService.userLogin(userName, userPwd);

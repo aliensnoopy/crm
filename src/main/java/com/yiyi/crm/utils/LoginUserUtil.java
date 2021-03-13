@@ -10,7 +10,7 @@ public class LoginUserUtil {
    * @return
    */
   public static int releaseUserIdFromCookie(HttpServletRequest request) {
-    String userIdString = CookieUtil.getCookieValue(request, "userIdStr");
+    String userIdString = CookieUtil.getCookieValue(request, "encryptedUserId");
     if (StringUtils.isBlank(userIdString)) {
       return 0;
     }

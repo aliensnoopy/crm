@@ -1,18 +1,18 @@
 package com.yiyi.crm.model;
 
 public class UserModel {
-  private final Integer userId;
+  private final String encryptedUserId;
   private final String userName;
   private final String trueName;
 
-  public UserModel(Integer userId, String userName, String trueName) {
-    this.userId = userId;
+  public UserModel(String encryptedUserId, String userName, String trueName) {
+    this.encryptedUserId = encryptedUserId;
     this.userName = userName;
     this.trueName = trueName;
   }
 
-  public Integer getUserId() {
-    return userId;
+  public String getEncryptedUserId() {
+    return encryptedUserId;
   }
 
   public String getUserName() {

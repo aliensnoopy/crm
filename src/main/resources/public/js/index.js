@@ -19,6 +19,13 @@ layui.use(['form', 'jquery', 'jquery_cookie'], function () {
             $.cookie("encryptedUserId", userModel.encryptedUserId);
             $.cookie("userName", userModel.userName);
             $.cookie("trueName", userModel.trueName);
+
+            if ($("#rememberMe").prop("checked")) {
+              $.cookie(
+                  "encryptedUserId", userModel.encryptedUserId, {expires: 7});
+              $.cookie("userName", userModel.userName, {expires: 7});
+              $.cookie("trueName", userModel.trueName, {expires: 7});
+            }
             window.location.href = ctx + "/main";
           });
         } else {

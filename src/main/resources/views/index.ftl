@@ -26,6 +26,10 @@
                  placeholder="Password" autocomplete="off" class="layui-input">
         </div>
         <div class="layui-form-item">
+          <input type="checkbox" name="rememberMe" id="rememberMe" value="true" lay-skin="primary"
+                 title="Remember">
+        </div>
+        <div class="layui-form-item">
           <button class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="login">Login</button>
         </div>
       </form>

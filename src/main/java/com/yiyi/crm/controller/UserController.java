@@ -5,6 +5,8 @@ import com.yiyi.crm.base.ResultInfo;
 import com.yiyi.crm.exceptions.ParamsException;
 import com.yiyi.crm.model.UserModel;
 import com.yiyi.crm.service.UserService;
+import com.yiyi.crm.utils.LoginUserUtil;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +39,30 @@ public class UserController extends BaseController {
     } catch (Exception e) {
       resultInfo.setCode(500);
       resultInfo.setMsg("Login failed.");
+      e.printStackTrace();
+    }
+    return resultInfo;
+  }
+
+  @PostMapping("updatepwd")
+  @ResponseBody
+  public ResultInfo updateUserPwd(
+      HttpServletRequest request,
+      @RequestParam String oldPwd,
+      @RequestParam String newPwd,
+      @RequestParam String repeatPwd) {
+    ResultInfo resultInfo = new ResultInfo();
+    try {
+      Integer userId = LoginUserUtil.releaseUserIdFromCookie(request);
+      userService.updatePwd(userId, oldPwd, newPwd, repeatPwd);
+      resultInfo.setMsg("Update password successfully.");
+    } catch (ParamsException e) {
+      resultInfo.setCode(e.getCode());
+      resultInfo.setMsg(e.getMsg());
+      e.printStackTrace();
+    } catch (Exception e) {
+      resultInfo.setCode(500);
+      resultInfo.setMsg("Failed to update password.");
       e.printStackTrace();
     }
     return resultInfo;

@@ -9,6 +9,7 @@ import com.yiyi.crm.utils.LoginUserUtil;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,5 +67,10 @@ public class UserController extends BaseController {
       e.printStackTrace();
     }
     return resultInfo;
+  }
+
+  @RequestMapping("toPasswordPage")
+  public String toPasswordPage() {
+    return "user/password";
   }
 }

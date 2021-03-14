@@ -21,6 +21,11 @@ public class GlobalExceptionHandler implements HandlerExceptionResolver {
       HttpServletResponse httpServletResponse,
       Object handler,
       Exception e) {
+    if (e instanceof NoLoginException) {
+      ModelAndView modelAndView = new ModelAndView("redirect:/index");
+      return modelAndView;
+    }
+
     ModelAndView modelAndView = new ModelAndView("error");
     modelAndView.addObject("code", 500);
     modelAndView.addObject("msg", "Exception occurred, please retry...");
